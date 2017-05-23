@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     var gameField = document.getElementById("gameField");
+    var scoreField = document.getElementById("scoreField");
     var rows = gameField.rows.length;
     var level = 2;
     var sumGame = 1;
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         alert("Game Over. Score: " + sumGame)
                     }
                     sumGame *= this.innerHTML;
+                    scoreField.innerHTML = sumGame;
                 }
             }
         }
