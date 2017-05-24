@@ -4,7 +4,10 @@ import {GameTable} from "./classes/Tables"
 document.addEventListener("DOMContentLoaded", function (event) {
     let table: HTMLTableElement = <HTMLTableElement>document.getElementById("gameField");
     let gameTable = new GameTable(table);
-    
+    // disable "normal" right click on gameField 
+    table.oncontextmenu = function () {
+        return false;
+    }
     
     
     
@@ -23,10 +26,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let numRow0123: number[] = [0, 0, 0, 0];
     let cols: number;
 
-    // disable "normal" right click on gameField 
-    table.oncontextmenu = function () {
-        return false;
-    }
+
 
     // initialise gameField
     for (let i = 0; i < numRows - 1; i += 1) {

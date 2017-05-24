@@ -1,8 +1,8 @@
 import { GameCell, InfoCell } from "./Cells";
 export class GameTable {
-    rows: GameCell[][];
-    infoRow: InfoCell[];
-    infoCol: InfoCell[];
+    private rows: GameCell[][];
+    private infoRow: InfoCell[];
+    private infoCol: InfoCell[];
     constructor(table: HTMLTableElement) {
         const numRows = table.rows.length;
         const numCols = table.rows[0].cells.length;
@@ -13,7 +13,7 @@ export class GameTable {
             }
         }
 
-        this.infoRow = <InfoCell[]>Array.from(table.rows[numRows-1].cells);
+        this.infoRow = <InfoCell[]>Array.from(table.rows[numRows - 1].cells);
         this.infoRow.pop();
         this.infoCol.pop();
     }

@@ -11,6 +11,13 @@ export class GameCell extends HTMLTableCellElement {
     constructor() {
         super();
         this.style.backgroundColor = "dimgray";
+        this.style.fontSize = "0px";
+
+        // define right click behaviour
+        this.oncontextmenu = this.toogleMarked;
+
+        //define left click behaviour
+        this.onclick = this.reveal;
     }
 
     public set value(v: number) {
@@ -48,10 +55,15 @@ export class GameCell extends HTMLTableCellElement {
     /**
      * reveal
      */
-    public reveal() {
-        this.style.fontSize = "48px";
-        this.style.backgroundColor = "dimgray";
-        this._state = CELL_STATE.REVEALED;
+    public reveal(): number {
+        //TODO: Exception throw?
+        if (this._state === CELL_STATE.HIDDEN) {
+            this.style.fontSize = "48px";
+            this.style.backgroundColor = "dimgray";
+            this._state = CELL_STATE.REVEALED;
+            return this._value;
+        }
+        return -1;
     }
 }
 
