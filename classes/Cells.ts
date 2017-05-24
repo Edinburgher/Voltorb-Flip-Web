@@ -60,12 +60,18 @@ export class GameCell {
         if (this._state === CELL_STATE.NOT_MARKED) {
             this._cell.style.backgroundColor = "yellow";
             this._state = CELL_STATE.MARKED;
-        } else {
+        } else if(this._state === CELL_STATE.MARKED) {
             this._cell.style.backgroundColor = "dimgray";
             this._state = CELL_STATE.NOT_MARKED;
         }
     }
 
+    /**
+     * checkFinishCondition
+     */
+    public checkFinishCondition(): boolean {
+        return (this._value > 1 && this._state !== CELL_STATE.REVEALED);
+    }
 
 }
 
@@ -78,7 +84,7 @@ export class InfoCell {
         this._cell = cell;
         this._cell.style.fontSize = "32px";
         this._numBombs = 0;
-        this._sumPoints = 1;
+        this._sumPoints = 0;
     }
 
     public addBombOrPoints = (p: number) => {
@@ -93,6 +99,6 @@ export class InfoCell {
      * setInfo
      */
     public setInfo = () => {
-        this._cell.innerHTML = "B: " + this._numBombs + "<br>P: " + this._sumPoints;
+        this._cell.innerHTML =  "P: " + this._sumPoints + "<br>B: " + this._numBombs;
     }
 }

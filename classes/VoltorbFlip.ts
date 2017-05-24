@@ -12,7 +12,7 @@ export class VoltorbFlip {
         this.scoreSpan = document.getElementById("scoreField");
     }
 
-    private init() {
+    private init = () => {
         this.gameTable.rows.forEach((row, i) => {
 
             row.forEach((cell, j) => {
@@ -24,12 +24,15 @@ export class VoltorbFlip {
                 this.gameTable.infoRow[j].addBombOrPoints(rand);
 
                 cell._cell.onclick = () => {
-                    var cellValue = cell.reveal()
+                    var cellValue = cell.reveal();
                     if (cellValue === 0) {
                         alert("Game Over. Score: " + this.score)
                     } else if (cellValue !== -1) {
                         this.score *= cellValue;
                         this.scoreSpan.innerHTML = String(this.score);
+                        if (this.checkFinished()) {
+                            alert("Congratulations! Score: " + this.score);
+                        }
                     }
                 }
             });
@@ -40,10 +43,16 @@ export class VoltorbFlip {
         this.gameTable.infoRow.forEach(infoCell => {
             infoCell.setInfo();
         });
+    }
 
-        function checkFinished(): boolean {
-            let finished: boolean = true;
-            return true;
-        }
+    checkFinished(): boolean {
+        let finished: boolean = true;
+        this.gameTable.rows.forEach(row => {
+            row.forEach(cell => {
+                if (cell.checkFinishCondition())
+                    finished = false;
+            });
+        });
+        return finished;
     }
 }
