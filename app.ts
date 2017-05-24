@@ -1,18 +1,11 @@
-import {GameCell, InfoCell} from "./classes/Cells";
-import {GameTable} from "./classes/Tables"
+import { VoltorbFlip } from "./classes/VoltorbFlip";
 
 document.addEventListener("DOMContentLoaded", function (event) {
+
+
     let table: HTMLTableElement = <HTMLTableElement>document.getElementById("gameField");
-    let gameTable = new GameTable(table);
-    // disable "normal" right click on gameField 
-    table.oncontextmenu = function () {
-        return false;
-    }
-    
-    
-    
-    
-    let numRows: number = table.rows.length;
+    let game = new VoltorbFlip(table);
+    /*let numRows: number = table.rows.length;
     let playTable: HTMLTableElement = <HTMLTableElement>table.cloneNode(true);
     let infoCellsRows: HTMLTableRowElement[];
 
@@ -38,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             let cell: GameCell = <GameCell>row.cells[j];
             //random int between 0 and int (excl.)
             let rand: number = Math.floor(Math.random() * 4);
-            /*
+            
             if (rand == 0) {
                 rand = (sumRow0123[0] >= 5 + level) ? 1 : rand;
             }
@@ -50,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
             if (rand == 3) {
                 rand = (sumRow0123[3] >= 1 + level) ? 1 : rand;
-            }*/
+            }
 
             // write random value to current cell
             cell.innerHTML = String(rand);
@@ -102,6 +95,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function checkFinished(): boolean {
         let finished: boolean = true;
         return true;
-    }
+    }*/
 });
 

@@ -1,20 +1,30 @@
 import { GameCell, InfoCell } from "./Cells";
 export class GameTable {
-    private rows: GameCell[][];
-    private infoRow: InfoCell[];
-    private infoCol: InfoCell[];
-    constructor(table: HTMLTableElement) {
+    rows: GameCell[][];
+    public infoRow: InfoCell[];
+    public infoCol: InfoCell[];
+    constructor(table: HTMLTableElement) {        
         const numRows = table.rows.length;
         const numCols = table.rows[0].cells.length;
-        for (var i = 0; i < numRows; i++) {
-            for (var j = 0; j < numCols; j++) {
-                this.rows[i][j] = <GameCell>table.rows[i].cells[j];
-                this.infoCol.push(<InfoCell>table.rows[i].cells[numCols - 1]);
-            }
-        }
+        this.rows = new Array<Array<GameCell>>(numRows-1);
+        this.infoCol = new Array<InfoCell>();
+        this.infoRow = new Array<InfoCell>();
 
-        this.infoRow = <InfoCell[]>Array.from(table.rows[numRows - 1].cells);
-        this.infoRow.pop();
-        this.infoCol.pop();
+        for (var i = 0; i < this.rows.length; i++) {
+            this.rows[i] = new Array<GameCell>();
+        }
+        // disable "normal" right click on gameField 
+        table.oncontextmenu = function () {
+            return false;
+        }
+        for (var i = 0; i < numRows -1 ; i++) {
+            for (var j = 0; j < numCols -1; j++) {
+                this.rows[i].push(new GameCell(table.rows[i].cells[j]));
+            }
+            this.infoCol.push(new InfoCell(table.rows[i].cells[numCols - 1]));
+        }
+        for (var i = 0; i < numCols-1; i++) {
+            this.infoRow.push(new InfoCell(table.rows[numRows - 1].cells[i]));
+        }        
     }
 }

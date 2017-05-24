@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
-        "target": "es6"
-    }
+        "target": "ES6",
+        "removeComments": true,
+        "sourceMap": true
+    },
+    "files": [
+        "./app.ts", "./classes/Cells.ts", "./classes/Tables.ts", "./classes/VoltorbFlip.ts"
+    ]
 }
