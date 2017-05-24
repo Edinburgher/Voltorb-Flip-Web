@@ -22,15 +22,15 @@ export class VoltorbFlip {
                 cell.value = rand;
                 this.gameTable.infoCol[i].addBombOrPoints(rand);
                 this.gameTable.infoRow[j].addBombOrPoints(rand);
-                
+
                 cell._cell.onclick = () => {
                     var cellValue = cell.reveal()
                     if (cellValue === 0) {
-
                         alert("Game Over. Score: " + this.score)
+                    } else if (cellValue !== -1) {
+                        this.score *= cellValue;
+                        this.scoreSpan.innerHTML = String(this.score);
                     }
-                    this.score *= cellValue;
-                    this.scoreSpan.innerHTML = String(cellValue);
                 }
             });
         });
