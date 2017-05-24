@@ -8,6 +8,7 @@ body {
 #gameField {
     margin: 0 auto;
     border: 2px solid black;
+    user-select: none;
 }
 
 #gameField td {
