@@ -25,6 +25,8 @@ export class VoltorbFlip {
                     rand = Math.floor(Math.random() * 3) + 1;
                 } else if (curr0 <= min0s) {
                     
+                } else {
+                    rand = Math.floor(Math.random() * 4);
                 }
 
                 // write random value to current cell
