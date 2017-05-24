@@ -12,8 +12,8 @@ body {
 }
 
 #gameField td {
-    width: 100px;
-    height: 100px;
+    /*width: 100px;
+    height: 100px;*/
     font-size: 48px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;

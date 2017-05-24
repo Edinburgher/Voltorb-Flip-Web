@@ -13,10 +13,19 @@ export class VoltorbFlip {
     }
 
     private init = () => {
+
+        let rand: number = 0;
         this.gameTable.rows.forEach((row, i) => {
+            let max0s: number = this.level;
+            let min0s: number = this.level / 2;
+            let curr0: number = 0;
 
             row.forEach((cell, j) => {
-                let rand: number = Math.floor(Math.random() * 4);
+                if (curr0 >= max0s) {
+                    rand = Math.floor(Math.random() * 3) + 1;
+                } else if (curr0 <= min0s) {
+                    
+                }
 
                 // write random value to current cell
                 cell.value = rand;
@@ -37,6 +46,8 @@ export class VoltorbFlip {
                 }
             });
         });
+
+        //write Data to infoCells
         this.gameTable.infoCol.forEach(infoCell => {
             infoCell.setInfo();
         });
