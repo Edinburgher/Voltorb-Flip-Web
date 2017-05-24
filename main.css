@@ -1,15 +1,16 @@
-body{
+body {
     background-color: darkgray;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
 }
-#gameField{
+
+#gameField {
     margin: 0 auto;
     border: 2px solid black;
 }
 
-#gameField td{
+#gameField td {
     width: 100px;
     height: 100px;
     font-size: 48px;
