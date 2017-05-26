@@ -3,6 +3,7 @@ enum CELL_STATE {
     MARKED,
     NOT_MARKED
 }
+
 export class GameCell {
     private _value: number;
     private _state: CELL_STATE;
@@ -23,25 +24,17 @@ export class GameCell {
         this._value = v;
         this._cell.innerHTML = String(v);
     }
-    /**
- * setMarked
- */
+
     private mark = () => {
         this._cell.style.backgroundColor = "yellow";
         this._state = CELL_STATE.MARKED;
     }
 
-    /**
-     * setUnmarked
-     */
     private unmark = () => {
         this._cell.style.backgroundColor = "dimgray";
         this._state = CELL_STATE.NOT_MARKED;
     }
 
-    /**
-     * reveal
-     */
     public reveal = (): number => {
         //TODO: Exception throw?
         if (this._state !== CELL_STATE.REVEALED) {
@@ -53,9 +46,6 @@ export class GameCell {
         return -1;
     }
 
-    /**
-     * toogleMarked
-     */
     public toogleMarked = () => {
         if (this._state === CELL_STATE.NOT_MARKED) {
             this._cell.style.backgroundColor = "yellow";
@@ -66,13 +56,9 @@ export class GameCell {
         }
     }
 
-    /**
-     * checkFinishCondition
-     */
     public checkFinishCondition(): boolean {
         return (this._value > 1 && this._state !== CELL_STATE.REVEALED);
     }
-
 }
 
 export class InfoCell {

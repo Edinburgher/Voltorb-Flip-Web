@@ -4,12 +4,13 @@ export class VoltorbFlip {
     private score: number;
     private level: number;
     private scoreSpan: HTMLSpanElement;
-    constructor(table: HTMLTableElement) {
+    constructor() {
         this.score = 1;
         this.level = 1;
         this.init();
         this.scoreSpan = document.getElementById("scoreField");
     }
+
     private generateTable = (): HTMLTableElement => {
         let oldTable = document.getElementById("gameField");
         if (oldTable !== null) {
@@ -30,6 +31,7 @@ export class VoltorbFlip {
         document.body.appendChild(dynTable);
         return dynTable;
     }
+    
     private init = () => {
         this.gameTable = new GameTable(this.generateTable());
         let rand: number = 0;
