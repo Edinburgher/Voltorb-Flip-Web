@@ -83,7 +83,6 @@ export class InfoCell {
     constructor(cell: HTMLTableCellElement) {
         this._cell = cell;
         this._cell.style.fontSize = "28px";
-        //this._cell.style.textAlign = "left";
         this._numBombs = 0;
         this._sumPoints = 0;
     }
@@ -100,6 +99,6 @@ export class InfoCell {
      * setInfo
      */
     public setInfo = () => {
-        this._cell.innerHTML = ((this._sumPoints>9)? ("P:") : ("P:")) + this._sumPoints + "<br><img src='https://www.pokewiki.de/images/a/ac/Pok%C3%A9monsprite_100_XY.gif'>x" + this._numBombs;
+        this._cell.innerHTML = ((this._sumPoints>9)? ("P:") : ("P: ")) + this._sumPoints + "<br><img src='https://www.pokewiki.de/images/a/ac/Pok%C3%A9monsprite_100_XY.gif'>x" + this._numBombs;
     }
 }

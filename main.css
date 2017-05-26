@@ -1,3 +1,7 @@
+html {
+    touch-action: manipulation;
+}
+
 body {
     background-color: darkgray;
     text-align: center;
@@ -10,11 +14,13 @@ body {
     border: 2px solid black;
     user-select: none;
     table-layout: fixed;
-
 }
 
-img{
-    height: 22px;
+img {
+    width: 24px;
+    position: relative;
+    left: 2px;
+    margin-right: 7px;
 }
 
 #gameField td {
